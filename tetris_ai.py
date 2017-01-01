@@ -192,13 +192,13 @@ class TetrisAI(object):
 
     def init_states(self, tetris):
 
-        self.max_score = -2**30
+        self.max_score = -(1<<30)
         self.tetro_queue[0] = tetris.tetromino
         self.tetro_queue[1] = tetris.next_tetromino
 
     def get_holes(self, board):
         """
-        Get the number of holes in the board.
+        Get the total number of holes in the board.
         """
 
         holes = 0

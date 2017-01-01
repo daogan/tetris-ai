@@ -206,7 +206,7 @@ class Tetris(object):
 
             # since machines are too dumb to perceive the fun of decreasing
             # timeout as humans do, we keep timeout constant if we are
-            # in AI-playing mode.
+            # under AI-playing mode.
             if not self.autoboot:
                 return
 

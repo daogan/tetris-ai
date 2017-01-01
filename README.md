@@ -12,7 +12,7 @@ To play the game automatically:
 ```sh
 python tetris_ai.py
 ```
-When playing the game interactively, use the arrow keys to control the tetromino's moving directions (<left>, <right>, <down>) and rotation (<up>), <space> to drop the tetromino straight down, <p> to pause or resume, and <q> to quit the game.
+When playing the game interactively, use the arrow keys to control the tetromino's moving directions (&lt;left&gt;, &lt;right&gt;, &lt;down&gt;) and rotation (&lt;up&gt;), &lt;space&gt; to drop the tetromino straight down, &lt;p&gt; to pause or resume, and &lt;q&gt; to quit the game.
 
 ## Implementations
 
