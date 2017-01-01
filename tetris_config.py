@@ -72,7 +72,7 @@ QUIT = ord('q')
 
 """
 
-# the coordinates of each tetromino, represented as (y, x) on a 4x4 grid, 
+# the coordinates of each tetromino, represented as (y, x) on a 4x4 grid,
 # a slight simplification of the Super Rotation System (SRS), read more at:
 # http://tetris.wikia.com/wiki/SRS
 TETROMINOS = (

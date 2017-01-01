@@ -103,7 +103,7 @@ class TetrisAI(object):
 
                 # since the board (and some other internal variables) is
                 # shared and modified during the recursive search, we need
-                # to remember the current board states for later restoration 
+                # to remember the current board states for later restoration
                 t_board = [row[:] for row in tetris.board]
                 t_n_fills = tetris.n_fills[:]
 
@@ -192,7 +192,7 @@ class TetrisAI(object):
 
     def init_states(self, tetris):
 
-        self.max_score = -(1<<30)
+        self.max_score = -(1 << 30)
         self.tetro_queue[0] = tetris.tetromino
         self.tetro_queue[1] = tetris.next_tetromino
 
@@ -255,11 +255,11 @@ class TetrisAI(object):
 
     def get_wells_height(self, board):
         """
-        Get the total wells height. 
-        
+        Get the total wells height.
+
         A well is a sequence of consecutive empty cells on the same column
         where the top empty cell is surrounded by filled cells or border of
-        the board. 
+        the board.
         For a well of depth n, the height is defined as 1 + 2 + ... + n,
         this gives more panalty to deeper wells.
         """
