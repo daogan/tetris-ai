@@ -73,11 +73,10 @@ class Tetris(object):
             # init_pair(number, foreground, background)
             curses.init_pair(i, i, i+8)
 
-        # board border color
+        # border color
         curses.init_pair(8, 10, 2)
-        # header text color
-        curses.init_pair(9, curses.COLOR_MAGENTA, -1)
         # text color
+        curses.init_pair(9, curses.COLOR_MAGENTA, -1)
         curses.init_pair(10, curses.COLOR_CYAN, -1)
         curses.init_pair(11, curses.COLOR_RED, -1)
 
@@ -150,33 +149,25 @@ class Tetris(object):
         Clear the fully filled lines on the board.
         """
 
+        n_lines = 0
+        dst = 0
         # only check for lines near the last landing position
-        lines = []
         for i in range(4):
             y = self.pos_y + i
             if y >= HEIGHT:
                 break
             if self.n_fills[y] == WIDTH:
-                lines.append(y)
+                n_lines += 1
+                dst = y
 
-        n_lines = len(lines)
-        # there is no completed lines
-        if n_lines == 0:
-            return 0
-
-        dst = lines[-1]
         src = dst - 1
-        i = n_lines - 2
         while src >= 0:
-            while i >= 0 and src == lines[i]:
+            while self.n_fills[src] == WIDTH:
                 src -= 1
-                i -= 1
             # skip copying if both src and dst rows are empty
             if self.n_fills[dst] > 0 or self.n_fills[src] > 0:
-                # self.board[dst] = self.board[srd][:]
                 self.n_fills[dst] = self.n_fills[src]
-                for j in range(WIDTH):
-                    self.board[dst][j] = self.board[src][j]
+                self.board[dst] = self.board[src][:]
             dst -= 1
             src -= 1
 
@@ -350,7 +341,7 @@ class Tetris(object):
 
     def draw_border(self):
         """
-        Draw the horizontal and vertical borders of the game board.
+        Draw horizontal and vertical borders of the game board.
         """
 
         color = self.colors[8]
