@@ -131,17 +131,15 @@ class TetrisAI(object):
         Return all rotated pieces of a given tetromino.
         """
 
+        yield tetro
         current = tetro
         tetro = NEXT[tetro]
-        pieces = [current]
 
         # stop when rotated back to the original tetromino
         while tetro != current:
-            pieces.append(tetro)
+            yield tetro
             # make a rotation
             tetro = NEXT[tetro]
-
-        return pieces
 
     def range_x(self, tetro):
         """
