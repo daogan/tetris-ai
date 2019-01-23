@@ -11,8 +11,8 @@ Date: 2016-12-25
 
 import time
 import curses
+import random
 
-from random import seed, randrange
 from tetris_config import *
 
 
@@ -20,7 +20,7 @@ class Tetris(object):
 
     def __init__(self, autoboot=True):
 
-        seed(time.time())
+        random.seed(time.time())
 
         self.board = [[EMPTY]*WIDTH for i in range(HEIGHT)]
         self.tetromino = self.random_tetromino()
@@ -69,9 +69,13 @@ class Tetris(object):
         curses.start_color()
         curses.use_default_colors()
 
-        for i in range(8):
+        colors = (
+            0, curses.COLOR_RED, curses.COLOR_GREEN, curses.COLOR_YELLOW,
+            curses.COLOR_BLUE, curses.COLOR_MAGENTA, curses.COLOR_CYAN, 13,
+        )
+        for i, bg in enumerate(colors):
             # init_pair(number, foreground, background)
-            curses.init_pair(i, i, i+8)
+            curses.init_pair(i, curses.COLOR_WHITE, bg)
 
         # border color
         curses.init_pair(8, 10, 2)
@@ -226,7 +230,7 @@ class Tetris(object):
         Generate a random sequence of tetromino pieces.
         """
 
-        return PIECES[randrange(0, len(PIECES))]
+        return random.choice(PIECES)
 
     def move(self, action):
 
